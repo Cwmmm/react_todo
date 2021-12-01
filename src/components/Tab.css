@@ -1,0 +1,15 @@
+.tab {
+  display: flex;
+}
+.tab span:nth-of-type(1) {
+  margin-right: auto;
+  margin-left: 0;
+}
+.tab span {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.tab .active {
+  border-bottom: 1px solid #333;
+}

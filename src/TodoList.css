@@ -1,0 +1,42 @@
+.todo_list {
+  background-color: #fff;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  padding: 50px;
+  border-radius: 3px;
+}
+.top_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date_info div {
+  display: inline-block;
+  font-size: 50px;
+  font-weight: 500;
+}
+.date_info span {
+  display: inline-block;
+  margin-left: 6px;
+}
+p {
+  font-weight: 300;
+}
+
+.date_info span p {
+  margin: 3px 0;
+  text-align: left;
+}
+
+.input_area {
+  width: 100%;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 300;
+  outline: none;
+  display: inline-block;
+  margin: 20px 0;
+}

@@ -1,0 +1,25 @@
+.list li {
+  line-height: 50px;
+  margin: 0 10px;
+  position: relative;
+}
+.list li i {
+  border: 2px solid #51e3a4;
+  transition: opacity 0.3s;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+
+.list .active i {
+  background-color: #51e3a4;
+}
+.list .active {
+  opacity: 0.5;
+  text-decoration: line-through;
+}

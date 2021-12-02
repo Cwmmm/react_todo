@@ -20,6 +20,7 @@ export default function Tab(props) {
   let renderList = types.map(item => {
     return (
       <span
+        key={item.value}
         className={props.activeVal === item.value ? 'active' : ''}
         onClick={(e) => handleClick(item.value)}
       >{item.label}</span>

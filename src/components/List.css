@@ -1,9 +1,15 @@
 .list li {
   line-height: 50px;
-  margin: 0 10px;
+  padding: 0 10px;
   position: relative;
 }
-.list li i {
+.list li:hover {
+  background-color: #eee;
+}
+.list li span {
+  margin-left: 30px;
+}
+.list li .check_box {
   border: 2px solid #51e3a4;
   transition: opacity 0.3s;
   width: 20px;
@@ -11,15 +17,42 @@
   border-radius: 50%;
   cursor: pointer;
   position: absolute;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  right: 0;
 }
 
-.list .active i {
+.list .active .check_box {
   background-color: #51e3a4;
 }
-.list .active {
+.list .active span,
+.list .active .check_box {
   opacity: 0.5;
   text-decoration: line-through;
+}
+
+.delete_box {
+  border: 2px solid red;
+  transition: opacity 0.3s;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+.delete_box::before {
+  content: 'X';
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+}
+.list_hover {
+  display: block;
 }

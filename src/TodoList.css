@@ -39,4 +39,6 @@ p {
   outline: none;
   display: inline-block;
   margin: 20px 0;
+  border: 1px solid #333;
+  border-radius: 3px;
 }

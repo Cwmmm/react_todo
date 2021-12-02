@@ -5,28 +5,29 @@ import React, { useState, useMemo } from 'react';
 
 export default function TodoList(props) {
   const [activeVal, setVal] = useState('0')
-  // const now = new Date()
   const dateObj = {
     date: '30',
     month: 'NOV',
     year: '2021',
     day: 'TUESDAY'
   }
-  let count = '0'
-  const taskArr = useState([
+  const [taskArr, setTaskArr] = useState([
     {
       label: '吃饭',
       completed: false,
     },
     {
       label: '睡觉',
-      completed: false,
+      completed: true,
     },
     {
       label: '玩手机',
       completed: false,
     },
   ])
+  let count = useMemo(() => {
+    return taskArr.length
+  }, [taskArr])
   const filterArr = useMemo(() => {
     if (activeVal === '0') {
       return taskArr
@@ -36,7 +37,27 @@ export default function TodoList(props) {
       return taskArr.filter(ele => ele.completed === true)
     }
   }, [activeVal, taskArr])
-
+  const enterKeyUp = (e) => {
+    if (e.keyCode === 13) {
+      const taskObj = {
+        label: e.target.value,
+        completed: false
+      }
+      setTaskArr([...taskArr, taskObj])
+      e.target.value = ''
+    }
+  }
+  function setTaskStatus(obj) {
+    const index = taskArr.findIndex(ele => ele.label === obj.label);
+    taskArr[index].completed = obj.completed;
+    setTaskArr([...taskArr])
+  }
+  function deleteTask(obj, e) {
+    e.stopPropagation();
+    const index = taskArr.findIndex(ele => ele.label === obj.label);
+    taskArr.splice(index, 1)
+    setTaskArr([...taskArr])
+  }
   return (
     <div className="todo_list">
       <div className="top_bar">
@@ -58,8 +79,8 @@ export default function TodoList(props) {
         </p>
       </div>
       <Tab count={count} activeVal={activeVal} setVal={setVal} />
-      <input type="text" placeholder="ADD NEW TASK" className="input_area" ></input>
-      <List filterArr={filterArr} />
+      <input type="text" placeholder="ADD NEW TASK" className="input_area" onKeyUp={enterKeyUp} ></input>
+      <List filterArr={filterArr} setTaskStatus={setTaskStatus} deleteTask={deleteTask} />
       {props.children}
     </div>
   );
